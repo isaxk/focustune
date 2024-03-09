@@ -1,5 +1,5 @@
 const windowStateManager = require('electron-window-state');
-const { app, BrowserWindow, ipcMain } = require('electron');
+const { app, BrowserWindow, ipcMain, shell } = require('electron');
 const contextMenu = require('electron-context-menu');
 const serve = require('electron-serve');
 const path = require('path');
@@ -21,15 +21,16 @@ function createWindow() {
 		defaultHeight: 600,
 	});
 
-	const mainWindow = new BrowserWindow({
+	let mainWindow = new BrowserWindow({
 		backgroundColor: '#121212',
 		titleBarStyle: 'hiddenInset',
 		autoHideMenuBar: true,
-		minWidth: 736,
-		minHeight: 386,
+		minWidth: 750,
+		minHeight: 450,
+		height: 450,
 		trafficLightPosition: {
 			x: 15,
-			y: 15,
+			y: 18,
 		},
 		webPreferences: {
 			enableRemoteModule: true,
@@ -44,6 +45,11 @@ function createWindow() {
 		width: windowState.width,
 		height: windowState.height,
 	});
+
+	mainWindow.webContents.setWindowOpenHandler(({url}) => {
+		shell.openExternal(url);
+		return { action: 'deny' }
+	  })
 
 	windowState.manage(mainWindow);
 
@@ -102,3 +108,4 @@ app.on('window-all-closed', () => {
 ipcMain.on('to-main', (event, count) => {
 	return mainWindow.webContents.send('from-main', `next count is ${count + 1}`);
 });
+

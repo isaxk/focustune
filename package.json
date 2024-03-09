@@ -1,11 +1,10 @@
 {
-	"name": "sveltekit-electron",
+	"name": "FocusTune",
 	"version": "0.0.1",
 	"private": true,
-	"description": "Minimal Sveltekit + Electron starter template.",
+	"description": "Distraction free client for study music radio stations.",
 	"main": "src/electron.cjs",
-	"type": "module",
-	"author": "Braden Wiggins",
+	"author": "isaxk.com",
 	"scripts": {
 		"dev": "cross-env NODE_ENV=dev npm run dev:all",
 		"dev:all": "concurrently -n=svelte,electron -c='#ff3e00',blue \"npm run dev:svelte\" \"npm run dev:electron\"",
@@ -26,7 +25,8 @@
 		"electron-context-menu": "^3.6.1",
 		"electron-reloader": "^1.2.3",
 		"electron-serve": "^1.1.0",
-		"electron-window-state": "^5.0.3"
+		"electron-window-state": "^5.0.3",
+		"youtube-player": "^5.6.0"
 	},
 	"devDependencies": {
 		"@sveltejs/adapter-static": "2.0.1",

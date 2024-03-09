@@ -18,6 +18,9 @@
 		class:active={isActive}
 		title={data.name}
 	>
+		<div class="icon">
+			<span class="material-symbols-outlined">home</span>
+		</div>
 		<div class="text">{data.name}</div>
 	</div>
 {:else}
@@ -30,6 +33,9 @@
 		class:active={isActive}
 		title={data.name}
 	>
+		<div class="icon">
+			<span class="material-symbols-outlined">play_circle</span>
+		</div>
 		<div class="text">{data.name}</div>
 	</div>
 {/if}
@@ -41,19 +47,23 @@
 	}
 	.icon {
 		height: 100%;
+		display: grid;
+		place-items: center;
+		padding-top: 1px;
 	}
 	.item {
 		display: grid;
-		grid-template-columns: 1fr;
+		grid-template-columns: max-content 1fr;
 		gap: 5px;
-		padding: 15px;
-		height: 40px;
+		padding: 0px 15px;
+		height: 30px;
 		width: 100%;
 		align-items: center;
 		align-content: center;
 		box-sizing: border-box;
 		cursor: default;
 		transition: 0.3s;
+		font-size: 15px;
 	}
 	.item:hover {
 		background-color: #2d2d2d;

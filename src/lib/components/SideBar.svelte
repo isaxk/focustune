@@ -5,13 +5,6 @@
 
 <div class="sidebar">
 	<div class="header" />
-	<SideBarItem
-		data={{
-			name: 'Home',
-		}}
-		home
-	/>
-	<hr />
 	{#each items as item, i}
 		<SideBarItem data={item} {i} />
 	{/each}
@@ -23,11 +16,11 @@
 	}
 	.header {
 		-webkit-app-region: drag;
-		height: 45px;
+		height: 50px;
 		margin-bottom: 0px;
 	}
 	hr {
-		margin: 0px 10px;
+		margin: 5px 10px;
 		border-color: grey;
 	}
 </style>
