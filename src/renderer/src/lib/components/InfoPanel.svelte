@@ -4,8 +4,8 @@
     export let data: any;
 </script>
 
-<div class="info" transition:slide class:windows={window.electron.isWindows}>
-    {#if window.electron.isWindows}
+<div class="info" transition:slide class:windows={window.electronAPI.isWindows}>
+    {#if window.electronAPI.isWindows}
         <h3>Info</h3>
     {/if}
     <div class="artist">By: Lofi Girl</div>

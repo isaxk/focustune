@@ -22,7 +22,7 @@
     <div class="top">
         <div class="main">
             <div class="title">
-                {#if window.electron.isWindows}
+                {#if window.electronAPI.isWindows}
                     <div class="app">FocusTune</div>
                     {#if !isHome}
                         <div class="radio">
@@ -54,7 +54,7 @@
                 </div>
             {/if}
         </div>
-        {#if window.electron.isWindows}
+        {#if window.electronAPI.isWindows}
             <!-- svelte-ignore a11y-no-static-element-interactions -->
             <!-- svelte-ignore a11y-click-events-have-key-events -->
             <div class="windows">
@@ -62,7 +62,7 @@
                     <span
                         class="material-symbols-outlined"
                         on:click={() => {
-                            window.electron.windowControl("minimize");
+                            window.electronAPI.windowControl("minimize");
                         }}
                     >
                         remove
@@ -71,7 +71,7 @@
                 <div
                     class="button maximise"
                     on:click={() => {
-                        window.electron.windowControl("maximize");
+                        window.electronAPI.windowControl("maximize");
                     }}
                 >
                     <span class="material-symbols-outlined">
@@ -81,7 +81,7 @@
                 <div
                     class="button close"
                     on:click={() => {
-                        window.electron.windowControl("close");
+                        window.electronAPI.windowControl("close");
                     }}
                 >
                     <span class="material-symbols-outlined"> close </span>
@@ -90,7 +90,7 @@
         {/if}
     </div>
 
-    {#if $showInfo === true && window.electron.isMac}
+    {#if $showInfo === true && window.electronAPI.isMac}
         <InfoPanel {data} />
     {/if}
 </div>

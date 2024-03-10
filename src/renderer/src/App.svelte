@@ -35,7 +35,7 @@
 </script>
 
 <main>
-    {#if window.electron.isWindows}
+    {#if window.electronAPI.isWindows}
         {#if $isHome}
             <PageHeader
                 data={{
@@ -52,7 +52,7 @@
     <div class="container" style:background-image={backgroundImage}>
         <SideBar />
         <div class="page-container">
-            {#if window.electron.isMac}
+            {#if window.electronAPI.isMac}
                 {#if $isHome}
                     <PageHeader
                         data={{

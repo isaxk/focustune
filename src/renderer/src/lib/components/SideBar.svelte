@@ -4,7 +4,7 @@
 </script>
 
 <div class="sidebar">
-    {#if window.electron.isMac}
+    {#if window.electronAPI.isMac}
         <div class="macos-header" />
 	{:else}
 		<div class="winlinux-header" />
