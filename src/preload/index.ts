@@ -1,22 +1,19 @@
-import { contextBridge } from 'electron'
-import { electronAPI } from '@electron-toolkit/preload'
+import { contextBridge, ipcRenderer } from 'electron/renderer'
 
+import { mac, windows } from "./detectos"
 // Custom APIs for renderer
-const api = {}
+
+const isMac = mac;
+const isWindows = windows;
+
 
 // Use `contextBridge` APIs to expose Electron APIs to
 // renderer only if context isolation is enabled, otherwise
 // just add to the DOM global.
-if (process.contextIsolated) {
-  try {
-    contextBridge.exposeInMainWorld('electron', electronAPI)
-    contextBridge.exposeInMainWorld('api', api)
-  } catch (error) {
-    console.error(error)
+contextBridge.exposeInMainWorld('electron', {
+  isWindows, isMac, windowControl: (action: "close" | "maximize" | "minimize") => {
+    ipcRenderer.send('windowAction', action);
+    console.log(action);
   }
-} else {
-  // @ts-ignore (define in dts)
-  window.electron = electronAPI
-  // @ts-ignore (define in dts)
-  window.api = api
-}
+});
+

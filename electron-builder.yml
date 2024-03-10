@@ -1,5 +1,5 @@
 appId: com.electron.app
-productName: focustune
+productName: FocusTune
 directories:
   buildResources: build
 files:
