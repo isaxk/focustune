@@ -4,7 +4,7 @@
 
 <div class="info">
     
-    <h1><img src="/favicon.png" alt=""><span>FocusTune</span></h1>
+    <h1><img src="/icon.png" alt=""><span>FocusTune</span></h1>
     <h3>The no distraction desktop app for streaming focus music.</h3>
     <ul>
         <li>Open Source</li>
