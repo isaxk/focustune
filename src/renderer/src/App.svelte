@@ -7,6 +7,7 @@
     import YtPlayer from "./lib/components/YtPlayer.svelte";
     import { items } from "./lib/data/items";
     import gradient from "./assets/gradient.png";
+    import homeicon from "./assets/homeicon.png";
 
     import { currentItem, isHome, isLoading, playstate, showInfo } from "./lib/stores";
     import InfoPanel from "./lib/components/InfoPanel.svelte";
@@ -16,9 +17,9 @@
     let backgroundImage: string;
 
     $: if ($isHome) {
-        backgroundImage = `url(${gradient}`;
+        backgroundImage = gradient;
     } else {
-        backgroundImage = `url(${items[$currentItem].bgsrc})`;
+        backgroundImage = items[$currentItem].bgsrc;
     }
 
     function togglePlayback() {
@@ -49,7 +50,7 @@
     {:else}
         <div class="space"></div>
     {/if}
-    <div class="container" style:background-image={backgroundImage}>
+    <div class="container" style="--url: url({backgroundImage})">
         <SideBar />
         <div class="page-container">
             {#if window.electronAPI.isMac}
@@ -72,7 +73,7 @@
             {/if}
             <!-- svelte-ignore a11y-click-events-have-key-events -->
             <!-- svelte-ignore a11y-no-static-element-interactions -->
-            <div class="spacer" on:click={togglePlayback}>
+            <div class="spacer" on:click={togglePlayback} class:home={$isHome} style="--url: url({homeicon})">
                 {#if $isLoading}<Loader />{/if}
             </div>
             <Controls disabled={$isHome} />
@@ -91,7 +92,8 @@
     .container {
         background-size: cover;
         background-position: center;
-        transition: 0.3s;
+        background-image: var(--url);
+        transition: 0.5s;
         display: grid;
         grid-template-columns: 175px 1fr;
     }
@@ -109,5 +111,11 @@
     .spacer {
         display: grid;
         place-items: center;
+        background-position: 50% 70%;
+        background-size: 500px;
+        transition: 0.3s;
+    }
+    .spacer.home {
+        background-image: var(--url);
     }
 </style>
