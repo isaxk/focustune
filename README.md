@@ -1,6 +1,6 @@
 # focustune
 
-An Electron application with Svelte and TypeScript
+The no distraction desktop app client for streaming study music radio live streams.
 
 ## Recommended IDE Setup
 
