@@ -6,6 +6,10 @@
     
 </script>
 
+<svelte:head>
+    <title>FocusTune</title>
+</svelte:head>
+
 <main>
     <div class="hero">
         <Info />

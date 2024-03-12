@@ -3,7 +3,8 @@
 </script>
 
 <div class="info">
-    <h1>FocusTune</h1>
+    
+    <h1><img src="/favicon.png" alt=""><span>FocusTune</span></h1>
     <h3>The no distraction desktop app for streaming focus music.</h3>
     <ul>
         <li>Open Source</li>
@@ -17,7 +18,7 @@
 <style>
     .info {
         height: 400px;
-        padding-top: 50px;
+        padding-top: 0px;
     }
     ul li {
         padding: 5px;
@@ -36,5 +37,14 @@
         display: inline-block;
         text-decoration: none;
         border-radius: 5px;
+    }
+    img {
+        width: 100%;
+    }
+    h1 {
+        display: grid;
+        grid-template-columns: 75px 1fr;
+        align-items: center;
+        gap: 10px;
     }
 </style>
