@@ -111,8 +111,9 @@
     .spacer {
         display: grid;
         place-items: center;
-        background-position: 50% 70%;
-        background-size: 500px;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: 200px;
         transition: 0.3s;
     }
     .spacer.home {
