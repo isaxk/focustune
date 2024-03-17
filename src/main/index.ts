@@ -44,25 +44,26 @@ function createWindow(): void {
 		mainWindow.loadFile(join(__dirname, '../renderer/index.html'))
 	}
 
-	ipcMain.on('windowAction', async (event, action) => {
-		const webContents = event.sender
-		const win = await BrowserWindow.fromWebContents(webContents);
-		if (win) {
-			if (action === "close") win.close();
-			if (action === "maximize") {
-				if (win.isMaximized()) {
-					win.unmaximize()
-				}
-				else {
-					win.maximize()
-				}
 
-			}
-
-			if (action === "minimize") win.minimize();
-		}
-	})
 }
+
+ipcMain.on('windowAction', async (event, action) => {
+	const webContents = event.sender
+	const win = await BrowserWindow.fromWebContents(webContents);
+	if (win) {
+		if (action === "close") win.close();
+		if (action === "maximize") {
+			if (!win.isMaximized()) {
+				win.maximize();
+			}
+			else if (win.isMaximized()) {
+				win.unmaximize()
+			}
+		}
+
+		if (action === "minimize") win.minimize();
+	}
+})
 
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
