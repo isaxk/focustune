@@ -5,23 +5,23 @@ import synthwave from "../../assets/synthwave.jpg";
 
 export const items = [
     {
-        name: 'lofi hiphop radio',
+        name: "lofi hiphop radio",
         bgsrc: lofi,
-        vidid: 'jfKfPfyJRdk',
+        vidid: "jfKfPfyJRdk",
     },
     {
         name: "peaceful piano radio",
         bgsrc: piano,
-        vidid: 'vMxYL4Cj85Y',
+        vidid: "vMxYL4Cj85Y",
     },
     {
         name: "dark ambient radio",
         bgsrc: ambient,
-        vidid: 'S_MOd40zlYU',
+        vidid: "S_MOd40zlYU",
     },
     {
         name: "synthwave radio",
         bgsrc: synthwave,
-        vidid: '4xDzrJKXOOY',
+        vidid: "4xDzrJKXOOY",
     },
 ];
