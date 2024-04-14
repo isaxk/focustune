@@ -25,6 +25,7 @@
 
 <style>
     .playpause {
+        all: unset;
         font-size: 30px;
         padding: 10px;
         cursor: default;

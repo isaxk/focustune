@@ -1,15 +1,41 @@
 <script lang="ts">
     import { volume } from "../../stores/index";
+
+    let prevVolume = $volume;
+
+    volume.subscribe((v) => {
+        if (v === 1) {
+            prevVolume = 25;
+        }
+    });
+
+    function toggleMute() {
+        if ($volume === 0) {
+            volume.set(prevVolume);
+        } else {
+            prevVolume = $volume;
+            volume.set(0);
+        }
+    }
 </script>
 
 <div class="volume">
-    <div class="icon">
-        <span class="material-symbols-outlined">volume_up</span>
-    </div>
+    <button class="icon mute-btn" on:click={toggleMute}>
+        <span class="material-symbols-outlined">
+            {#if $volume === 0}
+                volume_off
+            {:else}
+                volume_up
+            {/if}
+        </span>
+    </button>
     <input type="range" min="0" max="100" bind:value={$volume} class="slider" />
 </div>
 
 <style>
+    .mute-btn {
+        all: unset;
+    }
     .volume {
         overflow-y: visible;
         text-align: right;
