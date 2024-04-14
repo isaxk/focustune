@@ -1,11 +1,11 @@
 <script lang="ts">
-    import { isHome, currentItem, playstate } from "../stores";
+    import { isHome, currentItem, playstate } from "../../stores";
 
     export let data: { name: string; vidid: string };
     export let i: number;
 
-    import playinggif from "../../assets/playing.gif";
-    import pausedpng from "../../assets/paused.png";
+    import playinggif from "../../../assets/playing.gif";
+    import pausedpng from "../../../assets/paused.png";
 
     let active: boolean = false;
 

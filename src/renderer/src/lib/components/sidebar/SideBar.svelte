@@ -1,6 +1,6 @@
 <script>
     import SideBarItem from "./SideBarItem.svelte";
-    import { items } from "../data/items";
+    import { items } from "../../data/items";
 </script>
 
 <div class="sidebar">
@@ -29,8 +29,4 @@
 		height: 7px;
 		-webkit-app-region: drag;
 	}
-    hr {
-        margin: 5px 10px;
-        border-color: grey;
-    }
 </style>

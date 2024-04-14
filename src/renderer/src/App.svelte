@@ -1,16 +1,23 @@
 <script lang="ts">
+    import PageHeader from "./lib/components/header/PageHeader.svelte";
+
     import { onMount } from "svelte";
-    import Controls from "./lib/components/Controls.svelte";
-    import Loader from "./lib/components/Loader.svelte";
-    import PageHeader from "./lib/components/PageHeader.svelte";
-    import SideBar from "./lib/components/SideBar.svelte";
-    import YtPlayer from "./lib/components/YtPlayer.svelte";
+    import Controls from "./lib/components/playerui/PlayerControls.svelte";
+    import Loader from "./lib/components/playerui/Loader.svelte";
+    import SideBar from "./lib/components/sidebar/SideBar.svelte";
+    import YtPlayer from "./lib/components/logic/YtPlayer.svelte";
     import { items } from "./lib/data/items";
     import gradient from "./assets/gradient.png";
     import homeicon from "./assets/homeicon.png";
 
-    import { currentItem, isHome, isLoading, playstate, showInfo } from "./lib/stores";
-    import InfoPanel from "./lib/components/InfoPanel.svelte";
+    import {
+        currentItem,
+        isHome,
+        isLoading,
+        playstate,
+        showInfo,
+    } from "./lib/stores";
+    import InfoPanel from "./lib/components/header/InfoPanel.svelte";
 
     $: console.log($currentItem);
 
@@ -37,16 +44,7 @@
 
 <main>
     {#if window.electronAPI.isWindows}
-        {#if $isHome}
-            <PageHeader
-                data={{
-                    name: "FocusTune",
-                }}
-                isHome={$isHome}
-            />
-        {:else}
-            <PageHeader data={items[$currentItem]} />
-        {/if}
+        <PageHeader />
     {:else}
         <div class="space"></div>
     {/if}
@@ -54,16 +52,7 @@
         <SideBar />
         <div class="page-container">
             {#if window.electronAPI.isMac}
-                {#if $isHome}
-                    <PageHeader
-                        data={{
-                            name: "FocusTune",
-                        }}
-                        isHome={$isHome}
-                    />
-                {:else}
-                    <PageHeader data={items[$currentItem]} />
-                {/if}
+                <PageHeader />
             {:else}
                 <div class="space">
                     {#if $showInfo && !$isHome}
@@ -73,7 +62,12 @@
             {/if}
             <!-- svelte-ignore a11y-click-events-have-key-events -->
             <!-- svelte-ignore a11y-no-static-element-interactions -->
-            <div class="spacer" on:click={togglePlayback} class:home={$isHome} style="--url: url({homeicon})">
+            <div
+                class="spacer"
+                on:click={togglePlayback}
+                class:home={$isHome}
+                style="--url: url({homeicon})"
+            >
                 {#if $isLoading}<Loader />{/if}
             </div>
             <Controls disabled={$isHome} />

@@ -6,10 +6,10 @@
         isHome,
         currentItem,
         isLoading,
-    } from "../stores";
+    } from "../../stores";
 
     import YoutubePlayer from "youtube-player";
-    import { items } from "../data/items";
+    import { items } from "../../data/items";
 
     let player: any;
     let mounted: boolean = false;
