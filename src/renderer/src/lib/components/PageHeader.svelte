@@ -1,6 +1,6 @@
 <script lang="ts">
     import { fade } from "svelte/transition";
-    import { showInfo } from "../stores";
+    import { currentItem, showInfo } from "../stores";
     import InfoPanel from "./InfoPanel.svelte";
 
     export let data: any;
@@ -9,6 +9,15 @@
     $: if (data) {
         showInfo.set(false);
     }
+
+    currentItem.subscribe(()=> {
+        if(isHome) {
+            document.title = "FocusTune";
+        }
+        else {
+            document.title = "FocusTune - " + data.name;
+        }
+    })
 
     $: console.log($showInfo);
 
