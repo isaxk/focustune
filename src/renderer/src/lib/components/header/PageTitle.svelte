@@ -36,4 +36,7 @@
     .radio .gap {
         padding: 0px 8px 0px 12px;
     }
+    .title {
+        display: flex;
+    }
 </style>
