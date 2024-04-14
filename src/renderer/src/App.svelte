@@ -19,7 +19,6 @@
     } from "./lib/stores";
     import InfoPanel from "./lib/components/header/InfoPanel.svelte";
 
-    $: console.log($currentItem);
 
     let backgroundImage: string;
 
