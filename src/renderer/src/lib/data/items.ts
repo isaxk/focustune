@@ -12,12 +12,12 @@ export const items = [
     {
         name: "peaceful piano radio",
         bgsrc: piano,
-        vidid: 'nWjC1RnLYbM',
+        vidid: 'vMxYL4Cj85Y',
     },
     {
         name: "dark ambient radio",
         bgsrc: ambient,
-        vidid: 'SKhpl1OMqEY',
+        vidid: 'S_MOd40zlYU',
     },
     {
         name: "synthwave radio",
