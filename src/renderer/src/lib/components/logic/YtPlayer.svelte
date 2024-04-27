@@ -16,6 +16,7 @@
     let src: string;
 
     let stateListener: any;
+    let errorTimeout: ReturnType<typeof setTimeout>;
 
     onMount(() => {
         player = YoutubePlayer("player");
@@ -42,12 +43,14 @@
     });
 
     currentItem.subscribe(() => {
-        setTimeout(() => {
+        clearTimeout(errorTimeout);
+        errorTimeout = setTimeout(() => {
             player.getPlayerState().then((response: number) => {
                 if (response === -1 && !$isHome) {
                     alert(
                         "Something went wrong loading this radio. \n\n If the issue persists create an issue on GitHub. \n (github.com/isaxk/focustune/issues)",
                     );
+                    player.pauseVideo();
                     currentItem.set(0);
                     isHome.set(true);
                 }

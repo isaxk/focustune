@@ -19,7 +19,6 @@
     } from "./lib/stores";
     import InfoPanel from "./lib/components/header/InfoPanel.svelte";
 
-
     let backgroundImage: string;
 
     $: if ($isHome) {
@@ -47,29 +46,32 @@
     {:else}
         <div class="space"></div>
     {/if}
-    <div class="container" style="--url: url({backgroundImage})">
+    <div class="container">
         <SideBar />
-        <div class="page-container">
-            {#if window.electronAPI.isMac}
-                <PageHeader />
-            {:else}
-                <div class="space">
-                    {#if $showInfo && !$isHome}
-                        <InfoPanel data={items[$currentItem]} />
-                    {/if}
+        <div class="background" style="--url: url({backgroundImage})">
+            <div class="page-container" class:isHome={$isHome}>
+                {#if window.electronAPI.isMac}
+                    <PageHeader />
+                {:else}
+                    <div class="space">
+                        {#if $showInfo && !$isHome}
+                            <InfoPanel data={items[$currentItem]} />
+                        {/if}
+                    </div>
+                {/if}
+
+                <!-- svelte-ignore a11y-click-events-have-key-events -->
+                <!-- svelte-ignore a11y-no-static-element-interactions -->
+                <div
+                    class="spacer"
+                    on:click={togglePlayback}
+                    class:home={$isHome}
+                    style="--url: url({homeicon})"
+                >
+                    {#if $isLoading}<Loader />{/if}
                 </div>
-            {/if}
-            <!-- svelte-ignore a11y-click-events-have-key-events -->
-            <!-- svelte-ignore a11y-no-static-element-interactions -->
-            <div
-                class="spacer"
-                on:click={togglePlayback}
-                class:home={$isHome}
-                style="--url: url({homeicon})"
-            >
-                {#if $isLoading}<Loader />{/if}
+                <Controls disabled={$isHome} />
             </div>
-            <Controls disabled={$isHome} />
         </div>
     </div>
 </main>
@@ -85,7 +87,7 @@
     .container {
         background-size: cover;
         background-position: center;
-        background-image: var(--url);
+
         transition: 0.5s;
         display: grid;
         grid-template-columns: 175px 1fr;
@@ -100,6 +102,17 @@
             #121212f6 60px,
             #12121242 100%
         );
+        transition: .5s;
+    }
+    .page-container.isHome {
+        background: transparent;
+    }
+    .background {
+        background-color: #4a4a4a24;
+        background-image: var(--url);
+        background-size: cover;
+        background-position: center;
+        transition: .3s;
     }
     .spacer {
         display: grid;

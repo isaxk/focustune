@@ -7,7 +7,6 @@ function createWindow(): void {
 	// Create the browser window.
 	const mainWindow = new BrowserWindow({
 		titleBarStyle: "hiddenInset",
-		backgroundColor: "#121212",
 		autoHideMenuBar: true,
 		minWidth: 750,
 		minHeight: 450,
@@ -16,6 +15,9 @@ function createWindow(): void {
 			x: 15,
 			y: 16,
 		},
+		frame: false,
+		vibrancy: "under-window",
+		visualEffectState: "active",
 		titleBarOverlay: true,
 		show: false,
 		...(process.platform === 'linux' ? { icon } : {}),

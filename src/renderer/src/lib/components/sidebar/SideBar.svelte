@@ -16,7 +16,7 @@
 
 <style>
     .sidebar {
-        background-color: #212121b8;
+        background-color: transparent;
         backdrop-filter: blur(15px);
         user-select: none;
     }

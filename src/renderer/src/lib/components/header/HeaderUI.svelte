@@ -11,7 +11,7 @@
     export let data: any;
 </script>
 
-<div class="header">
+<div class="header" class:isHome={$isHome}>
     <div class="top">
         <div class="main">
             <PageTitle {data} />
@@ -38,6 +38,9 @@
         display: grid;
         align-items: center;
         min-height: 45px;
+    }
+    .header.isHome {
+        background: transparent;
     }
     .top {
         font-size: 18px;
